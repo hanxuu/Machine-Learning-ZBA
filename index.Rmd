@@ -1,10 +1,10 @@
 ---
-title: "Title"
-author: '[Author name](https://github.com/author-name)'
+title: "Machine Learning"
+author: '[Zehui Bai](https://github.com/Zehuibai)'
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-description: Description
-url: https\://username.github.io/reponame/
-github-repo: username/reponame
+description: Accumulation of some machine learning theories and methods
+url: https\://Zehuibai.github.io/Machine-Learning-ZBA/
+github-repo: Zehuibai/Machine-Learning-ZBA
 bibliography: references.bib
 link-citations: yes
 site: bookdown::bookdown_site

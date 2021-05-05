@@ -16,21 +16,6 @@ editor_options:
 colorlinks: yes
 ---
 
-```{r setup, include=FALSE, echo = FALSE,message = FALSE, error = FALSE, warning = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-# load package
-
-library(party)
-library(rpart)         # classification and regression trees
-library(partykit)      # treeplots
-library(MASS)          # breast and pima indian data
-library(randomForest)  # random forests
-library(xgboost)       # gradient boosting 
-library(caret)         # tune hyper-parameters
-```
-
-
 
 # Introduction
 
@@ -246,7 +231,7 @@ Example：一个学生进行模拟考试，100道题中错了30道，然后 只�
 
 ```{r,echo = T,message = FALSE, error = FALSE, warning = FALSE}
 ## Load dataset
-prostate <- read.delim("~/Library/Mobile Documents/com~apple~CloudDocs/02. Programm/01 R_lernen/00 Data/prostate.txt", header=T)
+prostate <- read.delim("/Users/zehuibai/Documents/GitHub/Machine-Learning-ZBA/data/prostate.txt", header=T)
 prostate$gleason <- ifelse(prostate$gleason == 6, 0, 1)
 pros.train <- subset(prostate, train == TRUE)[, 2:10]
 pros.test = subset(prostate, train == FALSE)[, 2:10]
