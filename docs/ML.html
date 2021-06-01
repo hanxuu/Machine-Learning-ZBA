@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Machine Learning</title>
   <meta name="description" content="Accumulation of some machine learning theories and methods" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Machine Learning" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 
 
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,12 +50,11 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.15/datatables.js"></script>
+<script src="libs/datatables-binding-0.18/datatables.js"></script>
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
 <script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
@@ -799,18 +799,18 @@ $(document).ready(function () {
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -830,7 +830,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -863,6 +863,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -879,85 +880,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Report About Something</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path=""><a href="#intro"><i class="fa fa-check"></i>Intro</a><ul>
-<li class="chapter" data-level="" data-path=""><a href="#sub-analysis"><i class="fa fa-check"></i>Sub analysis</a><ul>
+<li class="chapter" data-level="" data-path=""><a href="#intro"><i class="fa fa-check"></i>Intro</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#sub-analysis"><i class="fa fa-check"></i>Sub analysis</a>
+<ul>
 <li class="chapter" data-level="" data-path=""><a href="#yet-another-analysis"><i class="fa fa-check"></i>Yet another analysis</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path=""><a href="#bayesian-theory"><i class="fa fa-check"></i><b>1</b> Bayesian Theory</a></li>
 <li class="chapter" data-level="2" data-path=""><a href="#section"><i class="fa fa-check"></i><b>2</b> </a></li>
 <li class="chapter" data-level="3" data-path=""><a href="#space"><i class="fa fa-check"></i><b>3</b> ^_^ Space</a></li>
-<li class="chapter" data-level="4" data-path=""><a href="#space"><i class="fa fa-check"></i><b>4</b> ^_^ Space</a></li>
-<li class="chapter" data-level="5" data-path=""><a href="#space"><i class="fa fa-check"></i><b>5</b> ^_^ Space</a></li>
-<li class="chapter" data-level="6" data-path=""><a href="#regularization-penalized-regression"><i class="fa fa-check"></i><b>6</b> Regularization: Penalized Regression</a><ul>
-<li class="chapter" data-level="6.1" data-path=""><a href="#ridge-regression"><i class="fa fa-check"></i><b>6.1</b> Ridge Regression</a></li>
-<li class="chapter" data-level="6.2" data-path=""><a href="#数据准备"><i class="fa fa-check"></i><b>6.2</b> 数据准备</a></li>
-<li class="chapter" data-level="6.3" data-path=""><a href="#模型构建与模型评价"><i class="fa fa-check"></i><b>6.3</b> 模型构建与模型评价</a><ul>
-<li class="chapter" data-level="6.3.1" data-path=""><a href="#最优子集"><i class="fa fa-check"></i><b>6.3.1</b> 最优子集</a></li>
-<li class="chapter" data-level="6.3.2" data-path=""><a href="#岭回归"><i class="fa fa-check"></i><b>6.3.2</b> 岭回归</a></li>
-<li class="chapter" data-level="6.3.3" data-path=""><a href="#lasso"><i class="fa fa-check"></i><b>6.3.3</b> Lasso</a></li>
-<li class="chapter" data-level="6.3.4" data-path=""><a href="#弹性网络"><i class="fa fa-check"></i><b>6.3.4</b> 弹性网络</a></li>
-<li class="chapter" data-level="6.3.5" data-path=""><a href="#使用glmnet进行交叉验证"><i class="fa fa-check"></i><b>6.3.5</b> 使用glmnet进行交叉验证</a></li>
-<li class="chapter" data-level="6.3.6" data-path=""><a href="#模型选择"><i class="fa fa-check"></i><b>6.3.6</b> 模型选择</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path=""><a href="#space"><i class="fa fa-check"></i><b>7</b> ^_^ Space</a></li>
-<li class="chapter" data-level="8" data-path=""><a href="#classification-analysis"><i class="fa fa-check"></i><b>8</b> Classification Analysis</a></li>
-<li class="chapter" data-level="9" data-path=""><a href="#random-forest"><i class="fa fa-check"></i><b>9</b> Random Forest</a><ul>
-<li class="chapter" data-level="9.1" data-path=""><a href="#回归树"><i class="fa fa-check"></i><b>9.1</b> 回归树</a></li>
-<li class="chapter" data-level="9.2" data-path=""><a href="#分类树"><i class="fa fa-check"></i><b>9.2</b> 分类树</a></li>
-<li class="chapter" data-level="9.3" data-path=""><a href="#随机森林回归"><i class="fa fa-check"></i><b>9.3</b> 随机森林回归</a></li>
-<li class="chapter" data-level="9.4" data-path=""><a href="#随机森林分类"><i class="fa fa-check"></i><b>9.4</b> 随机森林分类</a><ul>
-<li class="chapter" data-level="9.4.1" data-path=""><a href="#乳腺癌数据集"><i class="fa fa-check"></i><b>9.4.1</b> 乳腺癌数据集</a></li>
-<li class="chapter" data-level="9.4.2" data-path=""><a href="#皮玛印第安人糖尿病数据集"><i class="fa fa-check"></i><b>9.4.2</b> 皮玛印第安人糖尿病数据集</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path=""><a href="#极限梯度提升分类"><i class="fa fa-check"></i><b>9.5</b> 极限梯度提升——分类</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path=""><a href="#使用随机森林进行特征选择"><i class="fa fa-check"></i><b>10</b> 使用随机森林进行特征选择</a></li>
-<li class="chapter" data-level="11" data-path=""><a href="#gradient-descent-and-gradient-boosting"><i class="fa fa-check"></i><b>11</b> Gradient Descent and Gradient Boosting</a></li>
-<li class="chapter" data-level="12" data-path=""><a href="#cubist-model"><i class="fa fa-check"></i><b>12</b> Cubist Model</a><ul>
-<li class="chapter" data-level="12.1" data-path=""><a href="#data-preparation"><i class="fa fa-check"></i><b>12.1</b> Data Preparation</a></li>
-<li class="chapter" data-level="12.2" data-path=""><a href="#fit-continious-outcome"><i class="fa fa-check"></i><b>12.2</b> Fit Continious Outcome</a><ul>
-<li class="chapter" data-level="12.2.1" data-path=""><a href="#variable-importance"><i class="fa fa-check"></i><b>12.2.1</b> Variable Importance</a></li>
-<li class="chapter" data-level="12.2.2" data-path=""><a href="#summary-display"><i class="fa fa-check"></i><b>12.2.2</b> Summary display</a></li>
-<li class="chapter" data-level="12.2.3" data-path=""><a href="#specific-parts"><i class="fa fa-check"></i><b>12.2.3</b> specific parts</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path=""><a href="#ensembles-by-committees"><i class="fa fa-check"></i><b>12.3</b> Ensembles By Committees</a><ul>
-<li class="chapter" data-level="12.3.1" data-path=""><a href="#nearestneighbors-adjustmemt"><i class="fa fa-check"></i><b>12.3.1</b> Nearest–neighbors Adjustmemt</a></li>
-</ul></li>
-<li class="chapter" data-level="12.4" data-path=""><a href="#optimize-parameters"><i class="fa fa-check"></i><b>12.4</b> Optimize parameters</a></li>
-<li class="chapter" data-level="12.5" data-path=""><a href="#logistic-cv"><i class="fa fa-check"></i><b>12.5</b> Logistic CV</a></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path=""><a href="#support-vector-machine"><i class="fa fa-check"></i><b>13</b> Support Vector Machine</a><ul>
-<li class="chapter" data-level="13.1" data-path=""><a href="#data-preparation"><i class="fa fa-check"></i><b>13.1</b> Data Preparation</a></li>
-<li class="chapter" data-level="13.2" data-path=""><a href="#模型选择"><i class="fa fa-check"></i><b>13.2</b> 模型选择</a></li>
-<li class="chapter" data-level="13.3" data-path=""><a href="#特征选择"><i class="fa fa-check"></i><b>13.3</b> 特征选择</a></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path=""><a href="#k-nearest-neighbors"><i class="fa fa-check"></i><b>14</b> K-Nearest Neighbors</a><ul>
-<li class="chapter" data-level="14.1" data-path=""><a href="#data-preparation"><i class="fa fa-check"></i><b>14.1</b> Data Preparation</a></li>
-<li class="chapter" data-level="14.2" data-path=""><a href="#加权最近邻法"><i class="fa fa-check"></i><b>14.2</b> 加权最近邻法</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path=""><a href="#linear-discriminant-analysis"><i class="fa fa-check"></i><b>15</b> Linear Discriminant Analysis</a></li>
-<li class="chapter" data-level="16" data-path=""><a href="#multivariate-adaptive-regression-spline"><i class="fa fa-check"></i><b>16</b> Multivariate Adaptive Regression Spline</a></li>
-<li class="chapter" data-level="17" data-path=""><a href="#clustering-analysis"><i class="fa fa-check"></i><b>17</b> Clustering Analysis</a></li>
-<li class="chapter" data-level="18" data-path=""><a href="#singular-value-decomposition"><i class="fa fa-check"></i><b>18</b> Singular Value Decomposition</a></li>
-<li class="chapter" data-level="19" data-path=""><a href="#pca"><i class="fa fa-check"></i><b>19</b> PCA</a><ul>
-<li class="chapter" data-level="19.1" data-path=""><a href="#introduction"><i class="fa fa-check"></i><b>19.1</b> Introduction</a></li>
-<li class="chapter" data-level="19.2" data-path=""><a href="#主成分旋转"><i class="fa fa-check"></i><b>19.2</b> 主成分旋转</a></li>
-<li class="chapter" data-level="19.3" data-path=""><a href="#数据准备"><i class="fa fa-check"></i><b>19.3</b> 数据准备</a></li>
-<li class="chapter" data-level="19.4" data-path=""><a href="#模型构建"><i class="fa fa-check"></i><b>19.4</b> 模型构建</a><ul>
-<li class="chapter" data-level="19.4.1" data-path=""><a href="#主成分抽取"><i class="fa fa-check"></i><b>19.4.1</b> 主成分抽取</a></li>
-<li class="chapter" data-level="19.4.2" data-path=""><a href="#正交旋转与解释"><i class="fa fa-check"></i><b>19.4.2</b> 正交旋转与解释</a></li>
-<li class="chapter" data-level="19.4.3" data-path=""><a href="#根据主成分建立因子得分"><i class="fa fa-check"></i><b>19.4.3</b> 根据主成分建立因子得分</a></li>
-<li class="chapter" data-level="19.4.4" data-path=""><a href="#回归分析"><i class="fa fa-check"></i><b>19.4.4</b> 回归分析</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path=""><a href="#neural-network"><i class="fa fa-check"></i><b>20</b> Neural Network</a><ul>
-<li class="chapter" data-level="20.1" data-path=""><a href="#introduction"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
-<li class="chapter" data-level="20.2" data-path=""><a href="#反向传播方法进行训练的前馈神经网络"><i class="fa fa-check"></i><b>20.2</b> 反向传播方法进行训练的前馈神经网络</a></li>
-<li class="chapter" data-level="20.3" data-path=""><a href="#application"><i class="fa fa-check"></i><b>20.3</b> Application</a><ul>
-<li class="chapter" data-level="20.3.1" data-path=""><a href="#数据准备"><i class="fa fa-check"></i><b>20.3.1</b> 数据准备</a></li>
-<li class="chapter" data-level="20.3.2" data-path=""><a href="#模型构建"><i class="fa fa-check"></i><b>20.3.2</b> 模型构建</a></li>
+<li class="chapter" data-level="4" data-path=""><a href="#space-1"><i class="fa fa-check"></i><b>4</b> ^_^ Space</a></li>
+<li class="chapter" data-level="5" data-path=""><a href="#space-2"><i class="fa fa-check"></i><b>5</b> ^_^ Space</a></li>
+<li class="chapter" data-level="6" data-path=""><a href="#neural-network"><i class="fa fa-check"></i><b>6</b> Neural Network</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path=""><a href="#introduction"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path=""><a href="#反向传播方法进行训练的前馈神经网络"><i class="fa fa-check"></i><b>6.2</b> 反向传播方法进行训练的前馈神经网络</a></li>
+<li class="chapter" data-level="6.3" data-path=""><a href="#application"><i class="fa fa-check"></i><b>6.3</b> Application</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path=""><a href="#数据准备"><i class="fa fa-check"></i><b>6.3.1</b> 数据准备</a></li>
+<li class="chapter" data-level="6.3.2" data-path=""><a href="#模型构建"><i class="fa fa-check"></i><b>6.3.2</b> 模型构建</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -983,7 +925,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Machine Learning</h1>
 <p class="author"><em><a href="https://github.com/Zehuibai">Zehui Bai</a></em></p>
-<p class="date"><em>05 May, 2021</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>01 June, 2021</em></p>
 </div>
 <div id="intro" class="section level1 unnumbered">
 <h1>Intro</h1>
@@ -996,806 +938,265 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="bayesian-theory" class="section level1">
+<div id="bayesian-theory" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Bayesian Theory</h1>
 
 </div>
-<div id="section" class="section level1">
+<div id="section" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> </h1>
 
 </div>
-<div id="space" class="section level1">
+<div id="space" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> ^_^ Space</h1>
 
 </div>
-<div id="space" class="section level1">
+<div id="space-1" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> ^_^ Space</h1>
 
 </div>
-<div id="space" class="section level1">
+<div id="space-2" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> ^_^ Space</h1>
 
 </div>
-<div id="regularization-penalized-regression" class="section level1">
-<h1><span class="header-section-number">6</span> Regularization: Penalized Regression</h1>
-<p>Placeholder</p>
-<div id="ridge-regression" class="section level2">
-<h2><span class="header-section-number">6.1</span> Ridge Regression</h2>
+<div id="neural-network" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Neural Network</h1>
+<div id="introduction" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Introduction</h2>
+<p>人工神经网络（Artificial Neural Network，即ANN ），是20世纪80 年代以来人工智能领域兴起的研究热点。它从信息处理角度对人脑神经元网络进行抽象， 建立某种简单模型，按不同的连接方式组成不同的网络。神经网络是一种运算模型，由大量的节点（或称神经元）之间相互联接构成。每个节点代表一种特定的输出函数，称为激励函数（activation function）。每两个节点间的连接都代表一个对于通过该连接信号的加权值，称之为权重，这相当于人工神经网络的记忆。网络的输出则依网络的连接方式，权重值和激励函数的不同而不同。而网络自身通常都是对自然界某种算法或者函数的逼近，也可能是对一种逻辑策略的表达。</p>
+<p>开发神经网络模型的动机（或者说神经网络模型的优点）在于，可以对输入变量（特征）和 响应变量之间的高度复杂关系进行建模，特别是关系呈现高度非线性时。神经网络模型的构建和 评价不需要基本假设，对于定量和定性响应变量都适用。</p>
+<p>对神经网络的一种常见的批评就是，它的结果是一个黑盒。换言之，没有一个 带有系数的等式可供检验并分享给业务伙伴。实际上，结果几乎是无法解释的。另外一种批评意 见的主要内容是，当初始的随机输入发生变化时，我们不清楚结果会发生什么变化。还有，神经网络的训练过程需要昂贵的时间和计算成本。</p>
+<p>“神经网络”的概念相当宽泛，它包括了很多相关的方法。</p>
 </div>
-<div id="数据准备" class="section level2">
-<h2><span class="header-section-number">6.2</span> 数据准备</h2>
-</div>
-<div id="模型构建与模型评价" class="section level2">
-<h2><span class="header-section-number">6.3</span> 模型构建与模型评价</h2>
-<div id="最优子集" class="section level3">
-<h3><span class="header-section-number">6.3.1</span> 最优子集</h3>
-</div>
-<div id="岭回归" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> 岭回归</h3>
-</div>
-<div id="lasso" class="section level3">
-<h3><span class="header-section-number">6.3.3</span> Lasso</h3>
-</div>
-<div id="弹性网络" class="section level3">
-<h3><span class="header-section-number">6.3.4</span> 弹性网络</h3>
-</div>
-<div id="使用glmnet进行交叉验证" class="section level3">
-<h3><span class="header-section-number">6.3.5</span> 使用glmnet进行交叉验证</h3>
-</div>
-<div id="模型选择" class="section level3">
-<h3><span class="header-section-number">6.3.6</span> 模型选择</h3>
+<div id="反向传播方法进行训练的前馈神经网络" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> 反向传播方法进行训练的前馈神经网络</h2>
+<p>在这个简单的网络中，输入（又称协变量）由两个节点（又称神经元）组成。标有1的神经 元代表一个常数，更确切地说，是截距。X1代表一个定量变量，W代表权重，会和输入节点的值 相乘。输入节点的值在与W相乘后传递到隐藏节点。你可以有多个隐藏节点，但是工作原理和一 个隐藏节点没有什么不同。在隐藏节点H1中，所有加权后的输入值被加总。因为截距为1，所以 这个输入节点的值就是权重W1。然后就是见证奇迹的时刻：加总后的值通过激活函数进行转换， 将输入信号转换为输出信号。在这个简单例子中，H1是唯一的隐藏节点，它的值被乘以W3，成 为响应变量Y的估计值。这就是算法的前馈部分</p>
+<p>完成一次完整的“训练”，还 要进行反向传播过程，基于学习到的知识来训练模型。为了初始化反向传播过程，需要基于损失 函数确定误差，损失函数可以是误差平方总和，也可以是交叉熵，或者其他形式。因为权重W1 和W2最初被设定为[1, 1]之间的随机数，所以初始的误差可能会很大。反向传播时，要改变权重 值以使损失函数中的误差最小。这样就完成了一次完整的训练。这个过程不断继续，使用梯度下降方法减小误差， 直到算法收敛于误差最小值或者达到预先设定的训练次数。如果假设本例中的激活函数是简单线 性的，那么结果为Y = W3(W1(1) + W2(X1))。</p>
+<p>有很多种激活函数可供使用，其中包括一个简单线性函数，还有用于分类问题的sigmoid函 数，它是逻辑斯蒂函数的一种特殊形式（第3章）。当输出变量是基于某种阈值的二值变量（0或1） 时，可以使用阈值函数。其他常用的激活函数还有Rectifier、Maxout以及双曲正切函数（tanh）。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 画出sigmoid函数</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sigmoid <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">1</span> <span class="sc">/</span> ( <span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>x) )</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, .<span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">sigmoid</span>(x))</span></code></pre></div>
+<p><img src="60-Neural-Networks_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 画出tanh函数 tanh(x) = 2 * sigmoid(2x) - 1， 绘制并比较tanh函数和sigmoid函数</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sigmoid</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">tanh</span>(x)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(x, s, t))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(z, <span class="fu">aes</span>(x)) <span class="sc">+</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> s, <span class="at">color =</span> <span class="st">&quot;sigmoid&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> t, <span class="at">color =</span> <span class="st">&quot;tanh&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Input&quot;</span>,<span class="at">y =</span> <span class="st">&quot;Output&quot;</span>) </span></code></pre></div>
+<p><img src="60-Neural-Networks_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p>tanh函数：</p>
+<pre><code>假设对数据做了缩放处理，使数据的均值为0、方差为1，那么tanh函数就可以提供一组均值接近于0(以0为中心)的权重。这样的权重有助于避免偏差， 并可以提高收敛速度。
 
+如果使用sigmoid函数作为激活函数，那么就意味着从输出神经元到输入神经元都是正的权重。在后向传播过程中，这样就会导致各层之间的权重或者都是正的，或者都是负的，从而引发性能方面的问题。还有，因为sigmoid函数在两个尾部(0和1)的 梯度接近于0，所以在后向传播过程中，几乎没有信号在不同层次的神经元之间流动。</code></pre>
+<p><a href="https://www.zhihu.com/question/22553761" class="uri">https://www.zhihu.com/question/22553761</a></p>
 </div>
-</div>
-</div>
-<div id="space" class="section level1">
-<h1><span class="header-section-number">7</span> ^_^ Space</h1>
-
-</div>
-<div id="classification-analysis" class="section level1">
-<h1><span class="header-section-number">8</span> Classification Analysis</h1>
-
-</div>
-<div id="random-forest" class="section level1">
-<h1><span class="header-section-number">9</span> Random Forest</h1>
-<p>准备数据：前列腺癌数据集。使用ifelse()函数将gleason评分编码为指标变量，划分训练数据集和测试数据集，训练数据集为pros.train，测试数据集为pros.test</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">## Load dataset</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>prostate &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;/Users/zehuibai/Documents/GitHub/Machine-Learning-ZBA/data/prostate.txt&quot;</span>, <span class="dt">header=</span>T)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>prostate<span class="op">$</span>gleason &lt;-<span class="st"> </span><span class="kw">ifelse</span>(prostate<span class="op">$</span>gleason <span class="op">==</span><span class="st"> </span><span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>pros.train &lt;-<span class="st"> </span><span class="kw">subset</span>(prostate, train <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>)[, <span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</span>
-<span id="cb1-5"><a href="#cb1-5"></a>pros.test =<span class="st"> </span><span class="kw">subset</span>(prostate, train <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>)[, <span class="dv">2</span><span class="op">:</span><span class="dv">10</span>]</span></code></pre></div>
-<div id="回归树" class="section level2">
-<h2><span class="header-section-number">9.1</span> 回归树</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">## 在训练数据集上建立回归树，使用party包中的rpart()函数</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a>tree.pros &lt;-<span class="st"> </span><span class="kw">rpart</span>(lpsa <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> pros.train)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>tree.pros<span class="op">$</span>cptable     <span class="co">## 检查每次分裂的误差，以决定最优的树分裂次数</span></span></code></pre></div>
-<pre><code>##           CP nsplit rel error    xerror       xstd
-## 1 0.35852251      0 1.0000000 1.0195606 0.17963802
-## 2 0.12295687      1 0.6414775 0.8742500 0.12878275
-## 3 0.11639953      2 0.5185206 0.7949473 0.10419946
-## 4 0.05350873      3 0.4021211 0.7904898 0.09821670
-## 5 0.01032838      4 0.3486124 0.7044000 0.09115510
-## 6 0.01000000      5 0.3382840 0.7321671 0.09381916</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>                      <span class="co">## CP的第一列是成本复杂性参数</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>                      <span class="co">## 第二列nsplit是树 分裂的次数，</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>                      <span class="co">## rel error列表示相对误差，即某次分裂的RSS除以不分裂的RSS(RSS(k)/RSS(0))</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a>                      <span class="co">## xerror和xstd都是基于10折交叉验证的</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a>                      <span class="co">## xerror是平均误差，xstd是交叉验证过程的标准差</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">## 可以 看出，5次分裂在整个数据集上产生的误差最小，但使用交叉验证时，4次分裂产生的误差略微更 小。</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">## 可以使用plotcp()函数查看统计图,使用误差条表示树的规模和相对误差之间的关系，误差条和树规模是对应的</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">plotcp</span>(tree.pros)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## 树的xerror可以通过剪枝达到最 小化。</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">## 剪枝的方法是先建立一个cp对象，将这个对象和表中第5行相关联，然后使用prune()函 数完成剩下的工作</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>cp &lt;-<span class="st"> </span><span class="kw">min</span>(tree.pros<span class="op">$</span>cptable[<span class="dv">5</span>, ])</span>
-<span id="cb5-4"><a href="#cb5-4"></a>prune.tree.pros &lt;-<span class="st"> </span><span class="kw">prune</span>(tree.pros, <span class="dt">cp =</span> cp)</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">## 可以用统计图比较完整树和剪枝树。</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">## 由partykit包生成的树图明显优于party包生成的，在plot()函数中，可使用as.party()函数作为包装器函数, 它们显示了树的分裂、节点、每节点观测数，以及预测结果的箱线图</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="kw">plot</span>(<span class="kw">as.party</span>(tree.pros))</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">plot</span>(<span class="kw">as.party</span>(prune.tree.pros))     <span class="co">## 使用as.party()函数处理剪枝树</span></span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>                                    <span class="co">## 除了最后一次分裂(完整树包含变量age)，两个树是完全一样的</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a></span>
-<span id="cb7-3"><a href="#cb7-3"></a></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">## Predict</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">## 剪枝树在测试集上表现如何。在测试数据上使用predict()函数进行预测，并建立一个对象保存这些预测值。然后用预测值减去实际值，得到误差，最后算出误差平方的平均值</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>party.pros.test &lt;-<span class="st"> </span><span class="kw">predict</span>(prune.tree.pros, </span>
-<span id="cb7-7"><a href="#cb7-7"></a>                           <span class="dt">newdata =</span> pros.test)</span>
-<span id="cb7-8"><a href="#cb7-8"></a>rpart.resid &lt;-<span class="st"> </span>party.pros.test <span class="op">-</span><span class="st"> </span>pros.test<span class="op">$</span>lpsa    <span class="co">## calculate residual</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="kw">mean</span>(rpart.resid<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5267748</code></pre>
-</div>
-<div id="分类树" class="section level2">
-<h2><span class="header-section-number">9.2</span> 分类树</h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## CART breast cancer 乳腺癌数据</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">## 删除患者ID，对特征进行重新命名，删除一些缺失值，然后建立训练数据集和测试数据集</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">data</span>(biopsy)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>biopsy &lt;-<span class="st"> </span>biopsy[, <span class="dv">-1</span>]</span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="kw">names</span>(biopsy) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;thick&quot;</span>, <span class="st">&quot;u.size&quot;</span>, <span class="st">&quot;u.shape&quot;</span>, <span class="st">&quot;adhsn&quot;</span>, <span class="st">&quot;s.size&quot;</span>, <span class="st">&quot;nucl&quot;</span>, <span class="st">&quot;chrom&quot;</span>, <span class="st">&quot;n.nuc&quot;</span>, <span class="st">&quot;mit&quot;</span>, <span class="st">&quot;class&quot;</span>)</span>
-<span id="cb9-6"><a href="#cb9-6"></a>biopsy.v2 &lt;-<span class="st"> </span><span class="kw">na.omit</span>(biopsy)</span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)                       <span class="co"># random number generator</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a>ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, <span class="kw">nrow</span>(biopsy.v2), <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>))</span>
-<span id="cb9-9"><a href="#cb9-9"></a>biop.train &lt;-<span class="st"> </span>biopsy.v2[ind <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, ] <span class="co"># the training data set</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a>biop.test &lt;-<span class="st"> </span>biopsy.v2[ind <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]  <span class="co"># the test data set</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="kw">str</span>(biop.test)                      <span class="co"># 建立分类树之前，要确保结果变量是一个因子</span></span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:	209 obs. of  10 variables:
-##  $ thick  : int  5 6 4 2 1 7 6 7 1 3 ...
-##  $ u.size : int  4 8 1 1 1 4 1 3 1 2 ...
-##  $ u.shape: int  4 8 1 2 1 6 1 2 1 1 ...
-##  $ adhsn  : int  5 1 3 1 1 4 1 10 1 1 ...
-##  $ s.size : int  7 3 2 2 1 6 2 5 2 1 ...
-##  $ nucl   : int  10 4 1 1 1 1 1 10 1 1 ...
-##  $ chrom  : int  3 3 3 3 3 4 3 5 3 2 ...
-##  $ n.nuc  : int  2 7 1 1 1 3 1 4 1 1 ...
-##  $ mit    : int  1 1 1 1 1 1 1 4 1 1 ...
-##  $ class  : Factor w/ 2 levels &quot;benign&quot;,&quot;malignant&quot;: 1 1 1 1 1 2 1 2 1 1 ...
-##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:16] 24 41 140 146 159 165 236 250 276 293 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:16] &quot;24&quot; &quot;41&quot; &quot;140&quot; &quot;146&quot; ...</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">## 生成树，然后检查输出中的表格，找到最优分裂次数</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb11-3"><a href="#cb11-3"></a>tree.biop &lt;-<span class="st"> </span><span class="kw">rpart</span>(class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> biop.train)</span>
-<span id="cb11-4"><a href="#cb11-4"></a>tree.biop<span class="op">$</span>cptable</span></code></pre></div>
-<pre><code>##           CP nsplit rel error    xerror       xstd
-## 1 0.79651163      0 1.0000000 1.0000000 0.06086254
-## 2 0.07558140      1 0.2034884 0.2616279 0.03710371
-## 3 0.01162791      2 0.1279070 0.1511628 0.02882093
-## 4 0.01000000      3 0.1162791 0.1511628 0.02882093</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## 交叉验证误差仅在两次分裂后就达到了最小值(第3行)。现在可以对树进行剪枝，再在图中绘制剪枝树</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>cp &lt;-<span class="st"> </span><span class="kw">min</span>(tree.biop<span class="op">$</span>cptable[<span class="dv">3</span>, ])</span>
-<span id="cb13-3"><a href="#cb13-3"></a>prune.tree.biop =<span class="st"> </span><span class="kw">prune</span>(tree.biop, cp &lt;-<span class="st"> </span>cp)</span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co">## plot(as.party(tree.biop))</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="kw">plot</span>(<span class="kw">as.party</span>(prune.tree.biop))</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">## 在测试集上的表现</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>rparty.test &lt;-<span class="st"> </span><span class="kw">predict</span>(prune.tree.biop, <span class="dt">newdata =</span> biop.test,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>                       <span class="dt">type =</span> <span class="st">&quot;class&quot;</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="kw">table</span>(rparty.test, biop.test<span class="op">$</span>class)</span></code></pre></div>
-<pre><code>##            
-## rparty.test benign malignant
-##   benign       136         3
-##   malignant      6        64</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">## 只有两个分支的基本树模型给出了差不多96%的正确率</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>(<span class="dv">136</span><span class="op">+</span><span class="dv">64</span>)<span class="op">/</span><span class="dv">209</span></span></code></pre></div>
-<pre><code>## [1] 0.9569378</code></pre>
-</div>
-<div id="随机森林回归" class="section level2">
-<h2><span class="header-section-number">9.3</span> 随机森林回归</h2>
-<p>建立一个随机森林对象的通用语法是使用 randomForest()函数，指定模型公式和数据集这两个基本参数。回想一下每次树迭代默认的变 量抽样数，对于回归问题，是p/3;对于分类问题，是p的平方根，p为数据集中预测变量的个数。 对于大规模数据集，就p而言，你可以调整mtry参数，它可以确定每次迭代的变量抽样数值。如 果p小于10，可以省略上面的调整过程。想在多特征数据集中优化mtry参数时，可以使用caret包， 或使用randomForest包中的tuneRF()函数。</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a>rf.pros &lt;-<span class="st"> </span><span class="kw">randomForest</span>(lpsa <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> pros.train)</span>
-<span id="cb18-3"><a href="#cb18-3"></a>rf.pros        <span class="co">## 生成了500个不同的树(默认设置)，并且在每次树分裂时随机抽出两个变量。</span></span></code></pre></div>
+<div id="application" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Application</h2>
+<div id="数据准备" class="section level3" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> 数据准备</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 数据保存在MASS包, Neuralnet包用于构建模型，caret包用于数据准备，vcd包会帮助进行数据可视化</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 数据集包括256个观测和7个变量。所有变量都是分类变量，响应变量use有两个水平，auto和noauto</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 表格来探索数据</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(shuttle)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(shuttle)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    256 obs. of  7 variables:
+##  $ stability: Factor w/ 2 levels &quot;stab&quot;,&quot;xstab&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ error    : Factor w/ 4 levels &quot;LX&quot;,&quot;MM&quot;,&quot;SS&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ sign     : Factor w/ 2 levels &quot;nn&quot;,&quot;pp&quot;: 2 2 2 2 2 2 1 1 1 1 ...
+##  $ wind     : Factor w/ 2 levels &quot;head&quot;,&quot;tail&quot;: 1 1 1 2 2 2 1 1 1 2 ...
+##  $ magn     : Factor w/ 4 levels &quot;Light&quot;,&quot;Medium&quot;,..: 1 2 4 1 2 4 1 2 4 1 ...
+##  $ vis      : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ use      : Factor w/ 2 levels &quot;auto&quot;,&quot;noauto&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(shuttle<span class="sc">$</span>use)</span></code></pre></div>
 <pre><code>## 
-## Call:
-##  randomForest(formula = lpsa ~ ., data = pros.train) 
-##                Type of random forest: regression
-##                      Number of trees: 500
-## No. of variables tried at each split: 2
-## 
-##           Mean of squared residuals: 0.6936697
-##                     % Var explained: 51.73</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>               <span class="co">## 结果的MSE为0.68，差不多53%的方差得到了解释</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>               <span class="co">## 改善。过多的树会导致过拟合,“多大的数量是‘过多’”依赖于数据规模。</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>               <span class="co">## 第一是做出rf.pros的统计图，另一件是求出最小的MSE</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a><span class="co">## 图表示MSE与模型中树的数量之间的关系。可以看出，树的数量增加时，一开始MSE会有显著改善，当森林中大约建立了100棵树之后，改善几乎停滞</span></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">plot</span>(rf.pros)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">which.min</span>(rf.pros<span class="op">$</span>mse)   <span class="co">## 具体的最优树数量</span></span></code></pre></div>
-<pre><code>## [1] 80</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>                         <span class="co">## 指定ntree =</span></span>
-<span id="cb23-2"><a href="#cb23-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb23-3"><a href="#cb23-3"></a>rf.pros<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">randomForest</span>(lpsa <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> pros.train, <span class="dt">ntree =</span> <span class="kw">which.min</span>(rf.pros<span class="op">$</span>mse))</span>
-<span id="cb23-4"><a href="#cb23-4"></a>rf.pros<span class="fl">.2</span></span></code></pre></div>
+##   auto noauto 
+##    145    111</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## vcd包提供了很多 制表和制图函数</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">structable</span>(wind <span class="sc">+</span> magn <span class="sc">~</span> use, shuttle)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>table1</span></code></pre></div>
+<pre><code>##        wind  head                    tail                  
+##        magn Light Medium Out Strong Light Medium Out Strong
+## use                                                        
+## auto           19     19  16     18    19     19  16     19
+## noauto         13     13  16     14    13     13  16     13</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## vcd包提供了mosaic()函数，将structable() 函数生成的表格绘制成统计图，同时提供了卡方检验的p值</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(table1, <span class="at">shade =</span> T)</span></code></pre></div>
+<p><img src="60-Neural-Networks_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 要生成统计图，也可以不使用structable()建立的对象，因为mosaic()函数也 可以接受公式</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 图中阴影发生了变化，反映出原假设被拒绝，变量之间具有相关性</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(use <span class="sc">~</span> error <span class="sc">+</span> vis, shuttle)</span></code></pre></div>
+<p><img src="60-Neural-Networks_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 用prop.table()函数查看比例表，将它作为table()函数的包装器即可</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(shuttle<span class="sc">$</span>use, shuttle<span class="sc">$</span>stability)</span></code></pre></div>
+<pre><code>##         
+##          stab xstab
+##   auto     81    64
+##   noauto   47    64</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(shuttle<span class="sc">$</span>use, shuttle<span class="sc">$</span>stability))</span></code></pre></div>
+<pre><code>##         
+##               stab     xstab
+##   auto   0.3164062 0.2500000
+##   noauto 0.1835938 0.2500000</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 卡方检验p值</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(shuttle<span class="sc">$</span>use, shuttle<span class="sc">$</span>stability)</span></code></pre></div>
 <pre><code>## 
-## Call:
-##  randomForest(formula = lpsa ~ ., data = pros.train, ntree = which.min(rf.pros$mse)) 
-##                Type of random forest: regression
-##                      Number of trees: 80
-## No. of variables tried at each split: 2
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
 ## 
-##           Mean of squared residuals: 0.6566502
-##                     % Var explained: 54.31</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">## 对模型进行检验之前，先看看另一张统计图。如果使用自助抽样和两个随机预测变量建立了80棵不同的树，要想将树的结果组合起来，需 要一种方法确定哪些变量驱动着结果。</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a><span class="co">## 做出变量重要性统计图及相应的列表。 Y轴是按重要性降序排列的变量列表，X轴是MSE改善百分比。</span></span>
-<span id="cb25-3"><a href="#cb25-3"></a><span class="co">## 在分类问题中，X轴应 该是基尼指数的改善</span></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="kw">varImpPlot</span>(rf.pros<span class="fl">.2</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb25-5"><a href="#cb25-5"></a>           <span class="dt">main =</span> <span class="st">&quot;Variable Importance Plot - PSA Score&quot;</span>)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">## 查看具体数据，可以 使用importance()函数</span></span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="kw">importance</span>(rf.pros<span class="fl">.2</span>)    </span></code></pre></div>
-<pre><code>##         IncNodePurity
-## lcavol      25.011557
-## lweight     15.822110
-## age          7.167320
-## lbph         5.471032
-## svi          8.497838
-## lcp          8.113947
-## gleason      4.990213
-## pgg45        6.663911</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co">## 看看模型在测试数据上的表现:</span></span>
-<span id="cb28-2"><a href="#cb28-2"></a>rf.pros.test &lt;-<span class="st"> </span><span class="kw">predict</span>(rf.pros<span class="fl">.2</span>, <span class="dt">newdata =</span> pros.test)</span>
-<span id="cb28-3"><a href="#cb28-3"></a><span class="co">## plot(rf.pros.test, pros.test$lpsa)</span></span>
-<span id="cb28-4"><a href="#cb28-4"></a>rf.resid &lt;-<span class="st"> </span>rf.pros.test <span class="op">-</span><span class="st"> </span>pros.test<span class="op">$</span>lpsa </span>
-<span id="cb28-5"><a href="#cb28-5"></a><span class="co">## calculate residual</span></span>
-<span id="cb28-6"><a href="#cb28-6"></a><span class="kw">mean</span>(rf.resid<span class="op">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.5512549</code></pre>
-</div>
-<div id="随机森林分类" class="section level2">
-<h2><span class="header-section-number">9.4</span> 随机森林分类</h2>
-<div id="乳腺癌数据集" class="section level3">
-<h3><span class="header-section-number">9.4.1</span> 乳腺癌数据集</h3>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co">## 乳腺癌诊断数据</span></span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb30-3"><a href="#cb30-3"></a>rf.biop &lt;-<span class="st"> </span><span class="kw">randomForest</span>(class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> biop.train)</span>
-<span id="cb30-4"><a href="#cb30-4"></a>rf.biop         <span class="co">## OOB(袋外数据)误差率</span></span></code></pre></div>
+## data:  shuttle$use and shuttle$stability
+## X-squared = 4.0718, df = 1, p-value = 0.0436</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 神经网络的数据准备是非常重要的，因为所有协变量和响应变量都必须是数值型。在这个案 例中，虽然所有变量都是分类变量，但caret包可以帮助我们快速建立虚拟变量作为输入特征：</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dummies <span class="ot">&lt;-</span> <span class="fu">dummyVars</span>(use <span class="sc">~</span>. ,shuttle, <span class="at">fullRank =</span> T)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>dummies</span></code></pre></div>
+<pre><code>## Dummy Variable Object
+## 
+## Formula: use ~ .
+## 7 variables, 7 factors
+## Variables and levels will be separated by &#39;.&#39;
+## A full rank encoding is used</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>shuttle<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">predict</span>(dummies, <span class="at">newdata =</span> shuttle))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(shuttle<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;stability.xstab&quot; &quot;error.MM&quot;        &quot;error.SS&quot;        &quot;error.XL&quot;       
+##  [5] &quot;sign.pp&quot;         &quot;wind.tail&quot;       &quot;magn.Medium&quot;     &quot;magn.Out&quot;       
+##  [9] &quot;magn.Strong&quot;     &quot;vis.yes&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(shuttle<span class="fl">.2</span>)</span></code></pre></div>
+<pre><code>##   stability.xstab error.MM error.SS error.XL sign.pp wind.tail magn.Medium
+## 1               1        0        0        0       1         0           0
+## 2               1        0        0        0       1         0           1
+## 3               1        0        0        0       1         0           0
+## 4               1        0        0        0       1         1           0
+## 5               1        0        0        0       1         1           1
+## 6               1        0        0        0       1         1           0
+##   magn.Out magn.Strong vis.yes
+## 1        0           0       0
+## 2        0           0       0
+## 3        0           1       0
+## 4        0           0       0
+## 5        0           0       0
+## 6        0           1       0</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ifelse()函数建立响应变量</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>shuttle<span class="fl">.2</span><span class="sc">$</span>use <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(shuttle<span class="sc">$</span>use <span class="sc">==</span> <span class="st">&quot;auto&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(shuttle<span class="fl">.2</span><span class="sc">$</span>use)</span></code></pre></div>
 <pre><code>## 
-## Call:
-##  randomForest(formula = class ~ ., data = biop.train) 
-##                Type of random forest: classification
-##                      Number of trees: 500
-## No. of variables tried at each split: 3
-## 
-##         OOB estimate of  error rate: 3.38%
-## Confusion matrix:
-##           benign malignant class.error
-## benign       294         8  0.02649007
-## malignant      8       164  0.04651163</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">plot</span>(rf.biop)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co">## 找出具体值。和前面不同的一点是，需要指定第一列来得到误差率，这是整体误差率</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a><span class="kw">which.min</span>(rf.biop<span class="op">$</span>err.rate[, <span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 125</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">## 使模型正确率达到最优</span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb35-3"><a href="#cb35-3"></a>rf.biop<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">randomForest</span>(class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> biop.train, <span class="dt">ntree =</span> <span class="dv">125</span>)</span>
-<span id="cb35-4"><a href="#cb35-4"></a>rf.biop<span class="fl">.2</span></span></code></pre></div>
-<pre><code>## 
-## Call:
-##  randomForest(formula = class ~ ., data = biop.train, ntree = 125) 
-##                Type of random forest: classification
-##                      Number of trees: 125
-## No. of variables tried at each split: 3
-## 
-##         OOB estimate of  error rate: 2.95%
-## Confusion matrix:
-##           benign malignant class.error
-## benign       294         8  0.02649007
-## malignant      6       166  0.03488372</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">## predict</span></span>
-<span id="cb37-2"><a href="#cb37-2"></a>rf.biop.test &lt;-<span class="st"> </span><span class="kw">predict</span>(rf.biop<span class="fl">.2</span>, </span>
-<span id="cb37-3"><a href="#cb37-3"></a>                        <span class="dt">newdata =</span> biop.test, </span>
-<span id="cb37-4"><a href="#cb37-4"></a>                        <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb37-5"><a href="#cb37-5"></a><span class="kw">table</span>(rf.biop.test, biop.test<span class="op">$</span>class)</span></code></pre></div>
-<pre><code>##             
-## rf.biop.test benign malignant
-##    benign       138         0
-##    malignant      4        67</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co">## 训练集上的误差率还不到3%</span></span>
-<span id="cb39-2"><a href="#cb39-2"></a>(<span class="dv">138</span> <span class="op">+</span><span class="st"> </span><span class="dv">67</span>) <span class="op">/</span><span class="st"> </span><span class="dv">209</span></span></code></pre></div>
-<pre><code>## [1] 0.9808612</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="co">## 变量重要性统计图</span></span>
-<span id="cb41-2"><a href="#cb41-2"></a><span class="kw">varImpPlot</span>(rf.biop<span class="fl">.2</span>)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co">## 变量重要性是指每个变量对基尼指数平均减少量的贡献，此处的变量重要性与单个树分裂时有很大区别。回忆一下，单个树是在细胞大小均匀度开始分裂的(与随机森林一致)，然后是nuclei，接着是细胞密度。这揭示了随机森林技术具有非常大的潜力，不但可以提高模 型预测能力，还可以改善特征选择的结果</span></span></code></pre></div>
+##   0   1 
+## 111 145</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## caret包还可以生成训练数据集和测试数据集，做法是对每个观测赋一个索引标记，或者标记 为训练数据，或者标记为测试数据，然后依照索引进行分类。我们按70/30的比例划分训练数据 和测试数据</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>trainIndex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(shuttle<span class="fl">.2</span><span class="sc">$</span>use, <span class="at">p =</span> .<span class="dv">7</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">list =</span> F)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># head(trainIndex)</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>shuttleTrain <span class="ot">&lt;-</span> shuttle<span class="fl">.2</span>[ trainIndex, ]</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>shuttleTest  <span class="ot">&lt;-</span> shuttle<span class="fl">.2</span>[<span class="sc">-</span>trainIndex, ]</span></code></pre></div>
 </div>
-<div id="皮玛印第安人糖尿病数据集" class="section level3">
-<h3><span class="header-section-number">9.4.2</span> 皮玛印第安人糖尿病数据集</h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co">## 皮玛印第安人糖尿病模型:数据准备</span></span>
-<span id="cb43-2"><a href="#cb43-2"></a><span class="kw">data</span>(Pima.tr)</span>
-<span id="cb43-3"><a href="#cb43-3"></a><span class="kw">data</span>(Pima.te)</span>
-<span id="cb43-4"><a href="#cb43-4"></a>pima &lt;-<span class="st"> </span><span class="kw">rbind</span>(Pima.tr, Pima.te)</span>
-<span id="cb43-5"><a href="#cb43-5"></a><span class="kw">set.seed</span>(<span class="dv">502</span>)</span>
-<span id="cb43-6"><a href="#cb43-6"></a>ind &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">2</span>, <span class="kw">nrow</span>(pima), <span class="dt">replace =</span> <span class="ot">TRUE</span>, <span class="dt">prob =</span> <span class="kw">c</span>(<span class="fl">0.7</span>, <span class="fl">0.3</span>))</span>
-<span id="cb43-7"><a href="#cb43-7"></a>pima.train &lt;-<span class="st"> </span>pima[ind <span class="op">==</span><span class="st"> </span><span class="dv">1</span>, ]</span>
-<span id="cb43-8"><a href="#cb43-8"></a>pima.test &lt;-<span class="st"> </span>pima[ind <span class="op">==</span><span class="st"> </span><span class="dv">2</span>, ]</span>
-<span id="cb43-9"><a href="#cb43-9"></a></span>
-<span id="cb43-10"><a href="#cb43-10"></a><span class="co">## 建立模型</span></span>
-<span id="cb43-11"><a href="#cb43-11"></a><span class="kw">set.seed</span>(<span class="dv">321</span>)</span>
-<span id="cb43-12"><a href="#cb43-12"></a>rf.pima &lt;-<span class="st"> </span><span class="kw">randomForest</span>(type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> pima.train)</span>
-<span id="cb43-13"><a href="#cb43-13"></a>rf.pima</span></code></pre></div>
-<pre><code>## 
-## Call:
-##  randomForest(formula = type ~ ., data = pima.train) 
-##                Type of random forest: classification
-##                      Number of trees: 500
-## No. of variables tried at each split: 2
-## 
-##         OOB estimate of  error rate: 20.26%
-## Confusion matrix:
-##      No Yes class.error
-## No  235  27   0.1030534
-## Yes  51  72   0.4146341</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="co"># plot(rf.pima)</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a></span>
-<span id="cb45-3"><a href="#cb45-3"></a><span class="co">## 对树的数目 进行优化</span></span>
-<span id="cb45-4"><a href="#cb45-4"></a><span class="kw">which.min</span>(rf.pima<span class="op">$</span>err.rate[,<span class="dv">1</span>])</span></code></pre></div>
-<pre><code>## [1] 88</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="kw">set.seed</span>(<span class="dv">321</span>)</span>
-<span id="cb47-2"><a href="#cb47-2"></a>rf.pima<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">randomForest</span>(type <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> pima.train, <span class="dt">ntree =</span> <span class="kw">which.min</span>(rf.pima<span class="op">$</span>err.rate[,<span class="dv">1</span>]))</span>
-<span id="cb47-3"><a href="#cb47-3"></a>rf.pima<span class="fl">.2</span>         <span class="co">## OOB误差有些许改善</span></span></code></pre></div>
-<pre><code>## 
-## Call:
-##  randomForest(formula = type ~ ., data = pima.train, ntree = which.min(rf.pima$err.rate[,      1])) 
-##                Type of random forest: classification
-##                      Number of trees: 88
-## No. of variables tried at each split: 2
-## 
-##         OOB estimate of  error rate: 19.74%
-## Confusion matrix:
-##      No Yes class.error
-## No  236  26  0.09923664
-## Yes  50  73  0.40650407</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>rf.pima.test &lt;-<span class="st"> </span><span class="kw">predict</span>(rf.pima<span class="fl">.2</span>, </span>
-<span id="cb49-2"><a href="#cb49-2"></a>                        <span class="dt">newdata =</span> pima.test, </span>
-<span id="cb49-3"><a href="#cb49-3"></a>                        <span class="dt">type =</span> <span class="st">&quot;response&quot;</span>)</span>
-<span id="cb49-4"><a href="#cb49-4"></a><span class="kw">table</span>(rf.pima.test, pima.test<span class="op">$</span>type)</span></code></pre></div>
-<pre><code>##             
-## rf.pima.test No Yes
-##          No  74  17
-##          Yes 19  37</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>(<span class="dv">75</span><span class="op">+</span><span class="dv">33</span>)<span class="op">/</span><span class="dv">147</span></span></code></pre></div>
-<pre><code>## [1] 0.7346939</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="co">#varImpPlot(rf.pima.2)</span></span></code></pre></div>
-</div>
-</div>
-<div id="极限梯度提升分类" class="section level2">
-<h2><span class="header-section-number">9.5</span> 极限梯度提升——分类</h2>
-<p>xgboost package</p>
-<pre><code> nrounds:最大迭代次数(最终模型中树的数量)。
- colsample_bytree:建立树时随机抽取的特征数量，用一个比率表示，默认值为1(使用100%的特征)。 
- min_child_weight:对树进行提升时使用的最小权重，默认为1。
- eta:学习率，每棵树在最终解中的贡献，默认为0.3。
- gamma:在树中新增一个叶子分区时所需的最小减损。
- subsample:子样本数据占整个观测的比例，默认值为1(100%)。  max_depth:单个树的最大深度。</code></pre>
-<p>使用expand.grid()函数可以建立实验网格，以运行caret包的训练过程。 对于前面列出的参数，如果没有设定具体值，那么即使有默认值，运行函数时也 会收到出错信息。下面的参数取值是基于以前的一些训练迭代而设定的。可以根据实验参数调整过程。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co">## 建立一个具有24个模型的网格，caret包会运行这些模型，以确定最好的调优参数。</span></span>
-<span id="cb55-2"><a href="#cb55-2"></a>grid =<span class="st"> </span><span class="kw">expand.grid</span>(</span>
-<span id="cb55-3"><a href="#cb55-3"></a>  <span class="dt">nrounds =</span> <span class="kw">c</span>(<span class="dv">75</span>, <span class="dv">100</span>),</span>
-<span id="cb55-4"><a href="#cb55-4"></a>  <span class="dt">colsample_bytree =</span> <span class="dv">1</span>,</span>
-<span id="cb55-5"><a href="#cb55-5"></a>  <span class="dt">min_child_weight =</span> <span class="dv">1</span>,</span>
-<span id="cb55-6"><a href="#cb55-6"></a>  <span class="dt">eta =</span> <span class="kw">c</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.3</span>), <span class="co">#0.3 is default,</span></span>
-<span id="cb55-7"><a href="#cb55-7"></a>  <span class="dt">gamma =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="fl">0.25</span>),</span>
-<span id="cb55-8"><a href="#cb55-8"></a>  <span class="dt">subsample =</span> <span class="fl">0.5</span>,</span>
-<span id="cb55-9"><a href="#cb55-9"></a>  <span class="dt">max_depth =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb55-10"><a href="#cb55-10"></a>)</span>
-<span id="cb55-11"><a href="#cb55-11"></a><span class="kw">head</span>(grid)</span></code></pre></div>
-<pre><code>##   nrounds colsample_bytree min_child_weight  eta gamma subsample max_depth
-## 1      75                1                1 0.01   0.5       0.5         2
-## 2     100                1                1 0.01   0.5       0.5         2
-## 3      75                1                1 0.10   0.5       0.5         2
-## 4     100                1                1 0.10   0.5       0.5         2
-## 5      75                1                1 0.30   0.5       0.5         2
-## 6     100                1                1 0.30   0.5       0.5         2</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co">## 使用car包的train()函数之前，创建一个名为cntrl的对象，来设定trainControl的参数。这个对象会保存要使用的方法，以训练调优参数。我们使用5折交叉验证</span></span>
-<span id="cb57-2"><a href="#cb57-2"></a><span class="co">## 在trControl中设定了verboseIter为TURE，所以可以看到每折交叉验证中的每次训练迭代。</span></span>
-<span id="cb57-3"><a href="#cb57-3"></a>cntrl =<span class="st"> </span><span class="kw">trainControl</span>(</span>
-<span id="cb57-4"><a href="#cb57-4"></a>  <span class="dt">method =</span> <span class="st">&quot;cv&quot;</span>,</span>
-<span id="cb57-5"><a href="#cb57-5"></a>  <span class="dt">number =</span> <span class="dv">5</span>,</span>
-<span id="cb57-6"><a href="#cb57-6"></a>  <span class="dt">verboseIter =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb57-7"><a href="#cb57-7"></a>  <span class="dt">returnData =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb57-8"><a href="#cb57-8"></a>  <span class="dt">returnResamp =</span> <span class="st">&quot;final&quot;</span>                                                        </span>
-<span id="cb57-9"><a href="#cb57-9"></a>)</span>
-<span id="cb57-10"><a href="#cb57-10"></a></span>
-<span id="cb57-11"><a href="#cb57-11"></a><span class="co">## 设定好所需参数即可:训练数据集、 标号、训练控制对象和实验网格。设定随机数种子</span></span>
-<span id="cb57-12"><a href="#cb57-12"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb57-13"><a href="#cb57-13"></a>train.xgb =<span class="st"> </span><span class="kw">train</span>(</span>
-<span id="cb57-14"><a href="#cb57-14"></a>  <span class="dt">x =</span> pima.train[, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>],</span>
-<span id="cb57-15"><a href="#cb57-15"></a>  <span class="dt">y =</span> ,pima.train[, <span class="dv">8</span>],</span>
-<span id="cb57-16"><a href="#cb57-16"></a>  <span class="dt">trControl =</span> cntrl,</span>
-<span id="cb57-17"><a href="#cb57-17"></a>  <span class="dt">tuneGrid =</span> grid,</span>
-<span id="cb57-18"><a href="#cb57-18"></a>  <span class="dt">method =</span> <span class="st">&quot;xgbTree&quot;</span></span>
-<span id="cb57-19"><a href="#cb57-19"></a>)</span></code></pre></div>
-<pre><code>## + Fold1: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold1: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold1: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold2: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold2: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold3: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold3: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold4: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold4: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.01, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.01, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.01, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.01, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.10, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.10, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.10, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.10, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.30, max_depth=2, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.30, max_depth=2, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.30, max_depth=3, gamma=0.25, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## + Fold5: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## - Fold5: eta=0.30, max_depth=3, gamma=0.50, colsample_bytree=1, min_child_weight=1, subsample=0.5, nrounds=100 
-## Aggregating results
-## Selecting tuning parameters
-## Fitting nrounds = 100, max_depth = 2, eta = 0.01, gamma = 0.5, colsample_bytree = 1, min_child_weight = 1, subsample = 0.5 on full training set</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co">## 得到最优的参数，以及每种参数设置的结果</span></span>
-<span id="cb59-2"><a href="#cb59-2"></a>train.xgb</span></code></pre></div>
-<pre><code>## eXtreme Gradient Boosting 
-## 
-## No pre-processing
-## Resampling: Cross-Validated (5 fold) 
-## Summary of sample sizes: 308, 309, 308, 307, 308 
-## Resampling results across tuning parameters:
-## 
-##   eta   max_depth  gamma  nrounds  Accuracy   Kappa    
-##   0.01  2          0.25    75      0.7865932  0.4700801
-##   0.01  2          0.25   100      0.7971195  0.5003081
-##   0.01  2          0.50    75      0.7971528  0.4945394
-##   0.01  2          0.50   100      0.8101407  0.5317302
-##   0.01  3          0.25    75      0.7971537  0.5018986
-##   0.01  3          0.25   100      0.7893948  0.4854910
-##   0.01  3          0.50    75      0.8050476  0.5221906
-##   0.01  3          0.50   100      0.7997853  0.5136332
-##   0.10  2          0.25    75      0.7896980  0.5002401
-##   0.10  2          0.25   100      0.7921605  0.5073063
-##   0.10  2          0.50    75      0.7947579  0.5167947
-##   0.10  2          0.50   100      0.7791717  0.4828563
-##   0.10  3          0.25    75      0.7948587  0.5114632
-##   0.10  3          0.25   100      0.7896297  0.5011073
-##   0.10  3          0.50    75      0.7845023  0.4923603
-##   0.10  3          0.50   100      0.7766418  0.4779629
-##   0.30  2          0.25    75      0.7557592  0.4362591
-##   0.30  2          0.25   100      0.7609198  0.4504284
-##   0.30  2          0.50    75      0.7635864  0.4475264
-##   0.30  2          0.50   100      0.7740093  0.4729577
-##   0.30  3          0.25    75      0.7636881  0.4478178
-##   0.30  3          0.25   100      0.7637547  0.4534616
-##   0.30  3          0.50    75      0.7583574  0.4403953
-##   0.30  3          0.50   100      0.7427721  0.3975159
-## 
-## Tuning parameter &#39;colsample_bytree&#39; was held constant at a value of 1
-## 
-## Tuning parameter &#39;min_child_weight&#39; was held constant at a value of 1
-## 
-## Tuning parameter &#39;subsample&#39; was held constant at a value of 0.5
-## Accuracy was used to select the optimal model using the largest value.
-## The final values used for the model were nrounds = 100, max_depth = 2, eta
-##  = 0.01, gamma = 0.5, colsample_bytree = 1, min_child_weight = 1 and
-##  subsample = 0.5.</code></pre>
-<p>接下来创建一个参数列表，供Xgboost包的训练函数xgb.train()使用。然后将数据框转换为一个输入特征矩阵，以及一个带标号的 数值型结果列表(其中的值是0和1)。接着，将特征矩阵和标号列表组合成符合要求的输入，即一个xgb.Dmatrix对象</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>param &lt;-<span class="st"> </span><span class="kw">list</span>(  <span class="dt">objective           =</span> <span class="st">&quot;binary:logistic&quot;</span>, </span>
-<span id="cb61-2"><a href="#cb61-2"></a>                <span class="dt">booster             =</span> <span class="st">&quot;gbtree&quot;</span>,</span>
-<span id="cb61-3"><a href="#cb61-3"></a>                <span class="dt">eval_metric         =</span> <span class="st">&quot;error&quot;</span>,</span>
-<span id="cb61-4"><a href="#cb61-4"></a>                <span class="dt">eta                 =</span> <span class="fl">0.1</span>, </span>
-<span id="cb61-5"><a href="#cb61-5"></a>                <span class="dt">max_depth           =</span> <span class="dv">2</span>, </span>
-<span id="cb61-6"><a href="#cb61-6"></a>                <span class="dt">subsample           =</span> <span class="fl">0.5</span>,</span>
-<span id="cb61-7"><a href="#cb61-7"></a>                <span class="dt">colsample_bytree    =</span> <span class="dv">1</span>,</span>
-<span id="cb61-8"><a href="#cb61-8"></a>                <span class="dt">gamma               =</span> <span class="fl">0.5</span></span>
-<span id="cb61-9"><a href="#cb61-9"></a>)</span>
-<span id="cb61-10"><a href="#cb61-10"></a></span>
-<span id="cb61-11"><a href="#cb61-11"></a>x &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(pima.train[, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>])</span>
-<span id="cb61-12"><a href="#cb61-12"></a>y &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pima.train<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb61-13"><a href="#cb61-13"></a>train.mat &lt;-<span class="st"> </span><span class="kw">xgb.DMatrix</span>(<span class="dt">data =</span> x, </span>
-<span id="cb61-14"><a href="#cb61-14"></a>                         <span class="dt">label =</span> y)</span>
-<span id="cb61-15"><a href="#cb61-15"></a></span>
-<span id="cb61-16"><a href="#cb61-16"></a><span class="co">## 创建模型</span></span>
-<span id="cb61-17"><a href="#cb61-17"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb61-18"><a href="#cb61-18"></a>xgb.fit &lt;-<span class="st"> </span><span class="kw">xgb.train</span>(<span class="dt">params =</span> param, <span class="dt">data =</span> train.mat, <span class="dt">nrounds =</span> <span class="dv">75</span>)</span>
-<span id="cb61-19"><a href="#cb61-19"></a>xgb.fit</span></code></pre></div>
-<pre><code>## ##### xgb.Booster
-## raw: 58.1 Kb 
-## call:
-##   xgb.train(params = param, data = train.mat, nrounds = 75)
-## params (as set within xgb.train):
-##   objective = &quot;binary:logistic&quot;, booster = &quot;gbtree&quot;, eval_metric = &quot;error&quot;, eta = &quot;0.1&quot;, max_depth = &quot;2&quot;, subsample = &quot;0.5&quot;, colsample_bytree = &quot;1&quot;, gamma = &quot;0.5&quot;, validate_parameters = &quot;TRUE&quot;
-## xgb.attributes:
-##   niter
-## callbacks:
-##   cb.print.evaluation(period = print_every_n)
-## # of features: 7 
-## niter: 75
-## nfeatures : 7</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co">## 查看模型效果之前，先检查变量重要性，并绘制统计图。你可以检查3个项目:gain、cover和frequecy。gain是这个特征对其所在分支的正确率做出的改善，cover是与这个特征相关的全体观测的相对数量，frequency是这个特征在所有树中出现的次数百分比</span></span>
-<span id="cb63-2"><a href="#cb63-2"></a>impMatrix &lt;-<span class="st"> </span><span class="kw">xgb.importance</span>(<span class="dt">feature_names =</span> <span class="kw">dimnames</span>(x)[[<span class="dv">2</span>]], <span class="dt">model =</span> xgb.fit)</span>
-<span id="cb63-3"><a href="#cb63-3"></a>impMatrix </span></code></pre></div>
-<pre><code>##    Feature       Gain      Cover  Frequency
-## 1:     glu 0.40798619 0.29195097 0.23880597
-## 2:     bmi 0.15376461 0.20961316 0.20895522
-## 3:     age 0.14659442 0.14958220 0.14427861
-## 4:     ped 0.11929560 0.14591598 0.15422886
-## 5:   npreg 0.07242808 0.07594945 0.08457711
-## 6:    skin 0.06111382 0.07025684 0.10447761
-## 7:      bp 0.03881728 0.05673139 0.06467662</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="kw">xgb.plot.importance</span>(impMatrix, <span class="dt">main =</span> <span class="st">&quot;Gain by Feature&quot;</span>)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="co">## 与训练集一样，测试集数据也要转换为矩阵</span></span>
-<span id="cb66-2"><a href="#cb66-2"></a><span class="kw">library</span>(InformationValue)</span>
-<span id="cb66-3"><a href="#cb66-3"></a>pred &lt;-<span class="st"> </span><span class="kw">predict</span>(xgb.fit, x)</span>
-<span id="cb66-4"><a href="#cb66-4"></a><span class="kw">optimalCutoff</span>(y, pred)      <span class="co">## 找出使误差最小化的最优概率阈</span></span></code></pre></div>
-<pre><code>## [1] 0.4416743</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>pima.testMat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(pima.test[, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>])</span>
-<span id="cb68-2"><a href="#cb68-2"></a>xgb.pima.test &lt;-<span class="st"> </span><span class="kw">predict</span>(xgb.fit, pima.testMat)</span>
-<span id="cb68-3"><a href="#cb68-3"></a>y.test &lt;-<span class="st"> </span><span class="kw">ifelse</span>(pima.test<span class="op">$</span>type <span class="op">==</span><span class="st"> &quot;Yes&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb68-4"><a href="#cb68-4"></a><span class="kw">optimalCutoff</span>(y.test, xgb.pima.test)</span></code></pre></div>
-<pre><code>## [1] 0.4837992</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="kw">confusionMatrix</span>(y.test, xgb.pima.test, <span class="dt">threshold =</span> <span class="fl">0.39</span>)</span></code></pre></div>
-<pre><code>##    0  1
-## 0 71 14
-## 1 22 40</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">misClassError</span>(y.test, xgb.pima.test, <span class="dt">threshold =</span> <span class="fl">0.39</span>)    <span class="co">## 模型误差大概是25%</span></span></code></pre></div>
-<pre><code>## [1] 0.7551</code></pre>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co">## ROC曲线</span></span>
-<span id="cb74-2"><a href="#cb74-2"></a><span class="kw">plotROC</span>(y.test, xgb.pima.test)</span></code></pre></div>
-<p><img src="46-Random-Forest_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
-</div>
-</div>
-<div id="使用随机森林进行特征选择" class="section level1">
-<h1><span class="header-section-number">10</span> 使用随机森林进行特征选择</h1>
-<p>Boruta包:[Kursa M., Rudnicki W. (2010), Feature Selection with the Boruta Package, Journal of Statistical Software, 36(11), 1 - 13]</p>
-<pre><code>1. 算法会复制所有输入特征，并对特征中的观测顺序进行重新组合，以去除 相关性，从而创建影子特征.
-2. 然后使用所有输入特征建立一个随机森林模型，并计算每个特征(包 括影子特征)的正确率损失均值的Z分数
-3. 如果某个特征的Z分数显著高于影子特征的Z分数，那么这个特征就被认为是重要的;反之，这个特征就被认为是不重要的
-4. 然后，去除掉影子特征和那些已经确认了重要性的特征，重复上面的过程，直到所有特征都被赋予一个表示重要性的值
-5. 算法结束之后，每个初始特征都会被标记为确认、待定或 拒绝
-6. 对于待定的特征，必须自己确定是否要包括在下一次建模中。根据具体情况，可以有以下几种选择:
-    * 改变随机数种子，重复运行算法多次(k次)，然后只选择那些在k次运行中都标记为“确认”的属性
-    * 将你的训练数据分为k折，在每折数据上分别进行算法迭代，然后选择那些在所有k折数据上都标记为“确认”的属性
-    
-    
-    </code></pre>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co">## prepare datasets</span></span>
-<span id="cb76-2"><a href="#cb76-2"></a><span class="co">## 数据集中有208个观测，60个输入特征，以及1个用于分类的标号向量。标号是个因子，如果sonar对象是岩石，标号就是R;如果sonar对象是矿藏，标号则是M</span></span>
-<span id="cb76-3"><a href="#cb76-3"></a><span class="kw">data</span>(Sonar, <span class="dt">package=</span><span class="st">&quot;mlbench&quot;</span>)</span>
-<span id="cb76-4"><a href="#cb76-4"></a><span class="kw">dim</span>(Sonar)</span></code></pre></div>
-<pre><code>## [1] 208  61</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="kw">table</span>(Sonar<span class="op">$</span>Class)</span></code></pre></div>
-<pre><code>## 
-##   M   R 
-## 111  97</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="co">## 在boruta()函数中创建一条模型公式。标号必须是因子类型，否则算法不会正常执行。如果想跟踪算法的进程，可以设定doTrace = 1。不要忘了设定随机数种子</span></span>
-<span id="cb80-2"><a href="#cb80-2"></a><span class="kw">class</span>(Sonar<span class="op">$</span>Class)</span></code></pre></div>
-<pre><code>## [1] &quot;factor&quot;</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="kw">library</span>(Boruta)</span>
-<span id="cb82-2"><a href="#cb82-2"></a><span class="kw">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb82-3"><a href="#cb82-3"></a>feature.selection &lt;-<span class="st"> </span><span class="kw">Boruta</span>(Class <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> Sonar, <span class="dt">doTrace =</span> <span class="dv">1</span>)</span>
-<span id="cb82-4"><a href="#cb82-4"></a><span class="co">## 需要大量的计算能力</span></span>
-<span id="cb82-5"><a href="#cb82-5"></a>feature.selection<span class="op">$</span>timeTaken</span></code></pre></div>
-<pre><code>## Time difference of 9.441353 secs</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a><span class="co">## 得出最终重要决策的计数</span></span>
-<span id="cb84-2"><a href="#cb84-2"></a><span class="kw">table</span>(feature.selection<span class="op">$</span>finalDecision)</span></code></pre></div>
-<pre><code>## 
-## Tentative Confirmed  Rejected 
-##        14        30        16</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="co">## 以找出特征名称: 以找出特征名称</span></span>
-<span id="cb86-2"><a href="#cb86-2"></a>fNames &lt;-<span class="st"> </span><span class="kw">getSelectedAttributes</span>(feature.selection) </span>
-<span id="cb86-3"><a href="#cb86-3"></a><span class="co">## 包括“确认”和“待定”的特征</span></span>
-<span id="cb86-4"><a href="#cb86-4"></a>fNames &lt;-<span class="st"> </span><span class="kw">getSelectedAttributes</span>(feature.selection, <span class="dt">withTentative =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb86-5"><a href="#cb86-5"></a>fNames</span></code></pre></div>
-<pre><code>##  [1] &quot;V1&quot;  &quot;V2&quot;  &quot;V4&quot;  &quot;V5&quot;  &quot;V8&quot;  &quot;V9&quot;  &quot;V10&quot; &quot;V11&quot; &quot;V12&quot; &quot;V13&quot; &quot;V14&quot; &quot;V15&quot;
-## [13] &quot;V16&quot; &quot;V17&quot; &quot;V18&quot; &quot;V19&quot; &quot;V20&quot; &quot;V21&quot; &quot;V22&quot; &quot;V23&quot; &quot;V26&quot; &quot;V27&quot; &quot;V28&quot; &quot;V29&quot;
-## [25] &quot;V30&quot; &quot;V31&quot; &quot;V32&quot; &quot;V34&quot; &quot;V35&quot; &quot;V36&quot; &quot;V37&quot; &quot;V39&quot; &quot;V42&quot; &quot;V43&quot; &quot;V44&quot; &quot;V45&quot;
-## [37] &quot;V46&quot; &quot;V47&quot; &quot;V48&quot; &quot;V49&quot; &quot;V51&quot; &quot;V52&quot; &quot;V54&quot; &quot;V59&quot;</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="co">## 使用这些特征名称，可以创建一个Sonar数据集的子集</span></span>
-<span id="cb88-2"><a href="#cb88-2"></a>Sonar.features &lt;-<span class="st"> </span>Sonar[, fNames]</span>
-<span id="cb88-3"><a href="#cb88-3"></a><span class="kw">dim</span>(Sonar.features)</span></code></pre></div>
-<pre><code>## [1] 208  44</code></pre>
-
-</div>
-<div id="gradient-descent-and-gradient-boosting" class="section level1">
-<h1><span class="header-section-number">11</span> Gradient Descent and Gradient Boosting</h1>
-
-</div>
-<div id="cubist-model" class="section level1">
-<h1><span class="header-section-number">12</span> Cubist Model</h1>
-<p>Placeholder</p>
-<div id="data-preparation" class="section level2">
-<h2><span class="header-section-number">12.1</span> Data Preparation</h2>
-</div>
-<div id="fit-continious-outcome" class="section level2">
-<h2><span class="header-section-number">12.2</span> Fit Continious Outcome</h2>
-<div id="variable-importance" class="section level3">
-<h3><span class="header-section-number">12.2.1</span> Variable Importance</h3>
-</div>
-<div id="summary-display" class="section level3">
-<h3><span class="header-section-number">12.2.2</span> Summary display</h3>
-</div>
-<div id="specific-parts" class="section level3">
-<h3><span class="header-section-number">12.2.3</span> specific parts</h3>
-</div>
-</div>
-<div id="ensembles-by-committees" class="section level2">
-<h2><span class="header-section-number">12.3</span> Ensembles By Committees</h2>
-<div id="nearestneighbors-adjustmemt" class="section level3">
-<h3><span class="header-section-number">12.3.1</span> Nearest–neighbors Adjustmemt</h3>
-</div>
-</div>
-<div id="optimize-parameters" class="section level2">
-<h2><span class="header-section-number">12.4</span> Optimize parameters</h2>
-</div>
-<div id="logistic-cv" class="section level2">
-<h2><span class="header-section-number">12.5</span> Logistic CV</h2>
-
-</div>
-</div>
-<div id="support-vector-machine" class="section level1">
-<h1><span class="header-section-number">13</span> Support Vector Machine</h1>
-<p>Placeholder</p>
-<div id="data-preparation" class="section level2">
-<h2><span class="header-section-number">13.1</span> Data Preparation</h2>
-</div>
-<div id="模型选择" class="section level2">
-<h2><span class="header-section-number">13.2</span> 模型选择</h2>
-</div>
-<div id="特征选择" class="section level2">
-<h2><span class="header-section-number">13.3</span> 特征选择</h2>
-
-</div>
-</div>
-<div id="k-nearest-neighbors" class="section level1">
-<h1><span class="header-section-number">14</span> K-Nearest Neighbors</h1>
-<p>Placeholder</p>
-<div id="data-preparation" class="section level2">
-<h2><span class="header-section-number">14.1</span> Data Preparation</h2>
-</div>
-<div id="加权最近邻法" class="section level2">
-<h2><span class="header-section-number">14.2</span> 加权最近邻法</h2>
-
-</div>
-</div>
-<div id="linear-discriminant-analysis" class="section level1">
-<h1><span class="header-section-number">15</span> Linear Discriminant Analysis</h1>
-
-</div>
-<div id="multivariate-adaptive-regression-spline" class="section level1">
-<h1><span class="header-section-number">16</span> Multivariate Adaptive Regression Spline</h1>
-
-</div>
-<div id="clustering-analysis" class="section level1">
-<h1><span class="header-section-number">17</span> Clustering Analysis</h1>
-
-</div>
-<div id="singular-value-decomposition" class="section level1">
-<h1><span class="header-section-number">18</span> Singular Value Decomposition</h1>
-
-</div>
-<div id="pca" class="section level1">
-<h1><span class="header-section-number">19</span> PCA</h1>
-<p>Placeholder</p>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">19.1</span> Introduction</h2>
-</div>
-<div id="主成分旋转" class="section level2">
-<h2><span class="header-section-number">19.2</span> 主成分旋转</h2>
-</div>
-<div id="数据准备" class="section level2">
-<h2><span class="header-section-number">19.3</span> 数据准备</h2>
-</div>
-<div id="模型构建" class="section level2">
-<h2><span class="header-section-number">19.4</span> 模型构建</h2>
-<div id="主成分抽取" class="section level3">
-<h3><span class="header-section-number">19.4.1</span> 主成分抽取</h3>
-</div>
-<div id="正交旋转与解释" class="section level3">
-<h3><span class="header-section-number">19.4.2</span> 正交旋转与解释</h3>
-</div>
-<div id="根据主成分建立因子得分" class="section level3">
-<h3><span class="header-section-number">19.4.3</span> 根据主成分建立因子得分</h3>
-</div>
-<div id="回归分析" class="section level3">
-<h3><span class="header-section-number">19.4.4</span> 回归分析</h3>
-
-</div>
-</div>
-</div>
-<div id="neural-network" class="section level1">
-<h1><span class="header-section-number">20</span> Neural Network</h1>
-<p>Placeholder</p>
-<div id="introduction" class="section level2">
-<h2><span class="header-section-number">20.1</span> Introduction</h2>
-</div>
-<div id="反向传播方法进行训练的前馈神经网络" class="section level2">
-<h2><span class="header-section-number">20.2</span> 反向传播方法进行训练的前馈神经网络</h2>
-</div>
-<div id="application" class="section level2">
-<h2><span class="header-section-number">20.3</span> Application</h2>
-<div id="数据准备" class="section level3">
-<h3><span class="header-section-number">20.3.1</span> 数据准备</h3>
-</div>
-<div id="模型构建" class="section level3">
-<h3><span class="header-section-number">20.3.2</span> 模型构建</h3>
+<div id="模型构建" class="section level3" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> 模型构建</h3>
+<p>在nerualnet包中，我们要使用 的函数的名字就叫作nerualnet()。除了模型公式，还有4个关键参数需要说明。</p>
+<p><em>hidden：每层中隐藏神经元的数量，最多可以设置3个隐藏层，默认值为1。<br />
+</em>act.fct：激活函数，默认为逻辑斯蒂函数，也可以设置为tanh函数。<br />
+<em>err.fct：计算误差，默认为sse；因为我们处理的是二值结果变量，所以要设置成ce， 使用交叉熵。<br />
+</em>linear.output：逻辑参数，控制是否忽略act.fct，默认值为TRUE；对于我们的数据来 说，需要设置为FALSE。
+*还可以指定算法，默认算法是弹性反向传播</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">## neuralnet中不允许用y ~指定数据集中除响应变量之外的所有变量, 绕过这种限制的方式是，使用as.formula()函数。先 建立一个保存变量名的对象，然后用这个对象作为输入，从而将变量名粘贴到公式右侧</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">names</span>(shuttleTrain)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>form <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">paste</span>(<span class="st">&quot;use ~&quot;</span>, <span class="fu">paste</span>(n[<span class="sc">!</span>n <span class="sc">%in%</span> <span class="st">&quot;use&quot;</span>], <span class="at">collapse =</span> <span class="st">&quot; + &quot;</span>)))</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>form</span></code></pre></div>
+<pre><code>## use ~ stability.xstab + error.MM + error.SS + error.XL + sign.pp + 
+##     wind.tail + magn.Medium + magn.Out + magn.Strong + vis.yes</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(form, <span class="at">data =</span> shuttleTrain, <span class="at">hidden =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="at">err.fct =</span> <span class="st">&quot;ce&quot;</span>, </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">linear.output =</span> F)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>result.matrix</span></code></pre></div>
+<pre><code>##                                      [,1]
+## error                         0.006745424
+## reached.threshold             0.008028217
+## steps                       251.000000000
+## Intercept.to.1layhid1        -2.913396291
+## stability.xstab.to.1layhid1   1.061971240
+## error.MM.to.1layhid1         -1.507105083
+## error.SS.to.1layhid1         -1.960491707
+## error.XL.to.1layhid1         -0.557518418
+## sign.pp.to.1layhid1          -0.362270154
+## wind.tail.to.1layhid1        -0.093003853
+## magn.Medium.to.1layhid1       0.012907060
+## magn.Out.to.1layhid1          1.118360425
+## magn.Strong.to.1layhid1       0.257518170
+## vis.yes.to.1layhid1           4.650735293
+## Intercept.to.1layhid2         1.560214842
+## stability.xstab.to.1layhid2  -1.204509288
+## error.MM.to.1layhid2         -0.000887696
+## error.SS.to.1layhid2          0.904825578
+## error.XL.to.1layhid2         -0.231255788
+## sign.pp.to.1layhid2           0.382575500
+## wind.tail.to.1layhid2         0.592086158
+## magn.Medium.to.1layhid2       0.058625357
+## magn.Out.to.1layhid2         -1.051535539
+## magn.Strong.to.1layhid2       0.179652043
+## vis.yes.to.1layhid2          -2.693403633
+## Intercept.to.2layhid1         1.615079923
+## 1layhid1.to.2layhid1        -15.554046037
+## 1layhid2.to.2layhid1         14.713278061
+## Intercept.to.use            -12.182285372
+## 2layhid1.to.use              24.844204493</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Interpretation: 误差非常低，仅为0.0099。steps的值是算法达到阈值所需的训练次数，也就是误 差函数的偏导数的绝对值小于阈值（默认为0.1）时的训练次数。权重最高的神经元是 vis.yes.to.1layhid1，权重值为6.21</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 广义权重: 被定义为第i个协变量 对对数发生比的贡献： 广义权重表示每个协变量xi的影响，可以类比为回归模型中的第i个回归系数。但是，广义权 重依赖于所有其他协变量。</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(fit<span class="sc">$</span>generalized.weights[[<span class="dv">1</span>]])</span></code></pre></div>
+<pre><code>##            [,1]         [,2]         [,3]         [,4]         [,5]
+## 1 -0.0058040120 0.0022578370 0.0061042939 2.793278e-05 0.0018809227
+## 4 -0.0007663366 0.0003444101 0.0008416829 2.706483e-05 0.0002491154
+## 5 -0.0006637593 0.0003076139 0.0007361950 2.814040e-05 0.0002159244
+## 6 -0.0007314225 0.0004031544 0.0008607337 6.341801e-05 0.0002389983
+## 7 -0.0444148565 0.0195765927 0.0484852322 1.374447e-03 0.0144317093
+## 8 -0.0367735469 0.0164391436 0.0403214453 1.254416e-03 0.0119526383
+##           [,6]         [,7]          [,8]          [,9]        [,10]
+## 1 0.0022094031 1.855860e-04 -0.0053538239  2.417218e-04 -0.016392872
+## 4 0.0002785484 2.252078e-05 -0.0007127678  1.914664e-05 -0.002234323
+## 5 0.0002386163 1.910769e-05 -0.0006185411  1.401738e-05 -0.001949295
+## 6 0.0002446797 1.830607e-05 -0.0006897356 -2.256756e-06 -0.002244884
+## 7 0.0162533313 1.321717e-03 -0.0412613771  1.215746e-03 -0.128915111
+## 8 0.0133914379 1.084446e-03 -0.0341918523  9.429830e-04 -0.107084095</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 实现神经网络的可视化</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 看vis.yes和wind.tail的广义权重图</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## vis.yes的广义权重非常不对称，而wind.tail的权重则分布得非常均匀，说明这个变量基本不具备预测能力</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gwplot</span>(fit, <span class="at">selected.covariate =</span> <span class="st">&quot;vis.yes&quot;</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gwplot</span>(fit, <span class="at">selected.covariate =</span> <span class="st">&quot;wind.tail&quot;</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 看模型的表现如何，可以通过在compute()函数中指定fit模型和协变量来实现</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>resultsTrain <span class="ot">&lt;-</span> <span class="fu">compute</span>(fit, shuttleTrain[, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 得到的结果是概率的形式，所以要将结果转换成0或1，然后生成混淆矩阵</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>predTrain <span class="ot">&lt;-</span> resultsTrain<span class="sc">$</span>net.result</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>predTrain <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(predTrain <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(predTrain, shuttleTrain<span class="sc">$</span>use)</span></code></pre></div>
+<pre><code>##          
+## predTrain   0   1
+##         0  73   0
+##         1   0 107</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Interpretation: 天哪, 正确率达到了100%！</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 在测试集上的表现</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>resultsTest <span class="ot">&lt;-</span> <span class="fu">compute</span>(fit, shuttleTest[,<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>])</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>predTest <span class="ot">&lt;-</span> resultsTest<span class="sc">$</span>net.result</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>predTest <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(predTest <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(predTest, shuttleTest<span class="sc">$</span>use)</span></code></pre></div>
+<pre><code>##         
+## predTest  0  1
+##        0 38  2
+##        1  0 36</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 测试集中只有一个假阳性的误预测。如果你想找出这是哪个观测，可以使用which()函数</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(predTest <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> shuttleTest<span class="sc">$</span>use <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## integer(0)</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>shuttleTest[<span class="dv">62</span>,]</span></code></pre></div>
+<pre><code>##     stability.xstab error.MM error.SS error.XL sign.pp wind.tail magn.Medium
+## 215               0        0        1        0       1         1           0
+##     magn.Out magn.Strong vis.yes use
+## 215        0           1       1   1</code></pre>
 
 </div>
 </div>
@@ -1829,6 +1230,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": false
 },
 "fontsettings": {

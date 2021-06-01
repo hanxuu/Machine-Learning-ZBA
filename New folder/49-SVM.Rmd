@@ -1,0 +1,200 @@
+# Support Vector Machine  
+
+```{r setup, include=FALSE, echo = FALSE,message = FALSE, error = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+## 机器学习基于R 第五章
+library(class)
+library(kknn)
+library(e1071)
+library(kernlab)
+library(caret)
+library(MASS)
+library(reshape2)
+library(ggplot2)
+library(pROC)
+```
+
+
+
+
+们在同一个数据集上应用KNN和SVM, 对混淆矩阵进行深入研究，并对评价 模型正确率的各个统计量进行比较.
+
+要研究的数据来自美国国家糖尿病消化病肾病研究所，这个数据集包括532个观测，8 个输入特征以及1个二值结果变量（Yes/No）。这项研究中的患者来自美国亚利桑那州中南部，是 皮玛族印第安人的后裔。数据显示，在过去的30年中，科学家已经通过研究证明肥胖是引发糖尿 病的重要因素。选择皮玛印第安人进行这项研究是因为，半数成年皮玛印第安人患有糖尿病。而这些患有糖尿病的人中，有95%超重。研究仅限于成年女性，病情则按照世界卫生组织的标准进 行诊断，为Ⅱ型糖尿病。这种糖尿病的患者胰腺功能并未完全丧失，还可以产生胰岛素，因此又 称“非胰岛素依赖型”糖尿病。
+
+是研究那些糖尿病患者，并对这个人群中可能导致糖尿病的风险因素进行预测。 久坐不动的生活方式和高热量的饮食习惯使得糖尿病已经成为美国的流行病。根据美国糖尿病协 会的数据，2010年，糖尿病成为美国排名第七的致死疾病，这个结果还不包括那些未被诊断出来 的病例。糖尿病还会大大增加其他疾病的发病概率，比如高血压、血脂异常、中风、眼疾和肾脏 疾病。糖尿病及其并发症的医疗成本非常巨大，据估计，美国2012年糖尿病治疗总成本大约为4900 亿美元。
+
+## Data Preparation
+
+数据集包含了532位女性患者的信息，存储在两个数据框中。数据集包含在MASS这个R包中，一个数据框是Pima.tr，另一个数据框的是Pima.te。我们不 将它们分别作为训练集和测试集，而是将其合在一起，然后建立自己的训练集和测试集
+
+数据集变量如下:
+
+    npreg：怀孕次数  
+    glu：血糖浓度，由口服葡萄糖耐量测试给出  
+    bp：舒张压（单位为mm Hg）  
+    skin：三头肌皮褶厚度（单位为mm）  
+    bmi：身体质量指数  
+    ped：糖尿病家族影响因素  
+    age：年龄  
+    type：是否患有糖尿病（是/否）
+
+
+```{r,echo = T,message = FALSE, error = FALSE, warning = FALSE}
+data(Pima.tr)
+str(Pima.tr)
+data(Pima.te)
+str(Pima.te)
+pima <- rbind(Pima.tr, Pima.te)
+str(pima)
+
+## 通过箱线图进行探索性分析。为此，要使用结果变量"type"作为ID变量的值。和逻辑斯蒂 回归一样，melt()函数会融合数据并准备好用于生成箱线图的数据框
+## 用facet_wrap()函数将统计图分两列显示
+pima.melt <- melt(pima, id.var = "type")
+ggplot(data = pima.melt, aes(x = type, y = value)) +
+  geom_boxplot() + facet_wrap(~ variable, ncol = 2)
+
+## 为很难从中发现任何明显区别, 里最大的问题是，不同统计图的 单位不同，但却共用一个Y轴。对数据进行标准化处理并重新做图，可以解决这个问题，并生成 更有意义的统计图。
+## R内建函数scale()，可以将数据转换为均值为0、标准差为1的标准 形式, 你对一个数据框应用了scale()函数，它 就自动变成一个矩阵。使用as.data.frame()函数，将其重新变回数据框
+## 要对所有特征进行转换，只留 下响应变量type
+pima.scale <- data.frame(scale(pima[, -8]))
+#scale.pima = as.data.frame(scale(pima[,1:7], byrow=FALSE)) #do not create own function
+str(pima.scale)
+pima.scale$type <- pima$type
+
+pima.scale.melt <- melt(pima.scale, id.var = "type")
+ggplot(data=pima.scale.melt, aes(x = type, y = value)) + 
+  geom_boxplot() + facet_wrap(~ variable, ncol = 2)
+## Interpretation: 出其他特征也随着 type发生变化，特别是age
+
+## 有两对变量之间具有相关性：npreg/age和skin/bmi。如果能够正确训练模型，并能调整好 超参数，那么多重共线性对于这些方法通常都不是问题
+cor(pima.scale[-8])
+## 先检查响应变量中 Yes和No的比例。确保数据划分平衡是非常重要的，如果某个结果过于稀疏，就会导致问题，可 能引起分类器在优势类和劣势类之间发生偏离。对于不平衡的判定没有一个固定的规则。一个比 较好的经验法则是，结果中的比例至少应该达到2∶1
+table(pima.scale$type)
+
+
+## 比例为2∶1，现在可以建立训练集和测试集了。使用我们常用的语法，划分比例为70/30
+set.seed(502)
+ind <- sample(2, nrow(pima.scale), replace = TRUE, prob = c(0.7, 0.3))
+train <- pima.scale[ind == 1, ]
+test <- pima.scale[ind == 2, ]
+str(train)
+str(test)
+```
+
+
+
+使用e1071包构建SVM模型，先从线性支持向量分类器开始，然后转入非线性模型
+
+e1071 包中有一个非常好的用于SVM的函数——tune.svm()，它可以帮助我们选择调优参数及核函 数。tune.svm()使用交叉验证使调优参数达到最优。我们先建立一个名为linear.tune的对象， 然后使用summary()函数看看其中的内容
+
+```{r,echo = T,message = FALSE, error = FALSE, warning = FALSE}
+## linear tune
+set.seed(123)
+linear.tune <- tune.svm(type ~ ., data = train, 
+                        kernel = "linear", 
+                        cost = c(0.001, 0.01, 0.1, 1, 5, 10))
+summary(linear.tune)
+
+## 最优成本函数cost是1，这时的误分类误差率差不多为21%。我们在测试集 上进行预测和检验
+best.linear <- linear.tune$best.model
+tune.test <- predict(best.linear, newdata = test)
+table(tune.test, test$type)
+(82+30)/147
+
+## 试验的第一个核函数是多项式核函数，需要调整优化两个参数：多项式的阶（degree） 与核系数（coef0）。设定多项式的阶是3、4和5，核系数从0.1逐渐增加到4
+## SVM with e1071; tune the poly only
+set.seed(123)
+poly.tune <- tune.svm(type ~ ., data = train, 
+                      kernel = "polynomial", 
+                      degree = c(3, 4, 5), 
+                      coef0 = c(0.1, 0.5, 1, 2, 3, 4))
+summary(poly.tune)
+best.poly <- poly.tune$best.model
+poly.test <- predict(best.poly, newdata = test)
+table(poly.test, test$type)
+(81 + 26) / 147
+
+
+## 测试径向基核函数，此处只需找出一个参数gamma， 在0.1 ~ 4中依次检验。如果gamma过小，模型就不能解释决策边界的复杂性；如果gamma过大， 模型就会严重过拟合。
+## tune the rbf
+set.seed(123)
+rbf.tune <- tune.svm(type ~ ., data = train, 
+                     kernel = "radial", 
+                     gamma = c(0.1, 0.5, 1, 2, 3, 4))
+summary(rbf.tune)
+best.rbf <- rbf.tune$best.model
+rbf.test <- predict(best.rbf, newdata = test)
+table(rbf.test, test$type)
+(73+21)/147
+
+
+## 找出两个参 数——gamma和核系数（coef0）
+## tune the sigmoid
+set.seed(123)
+sigmoid.tune <- tune.svm(type ~ ., data = train, 
+                         kernel = "sigmoid", 
+                         gamma = c(0.1, 0.5, 1, 2, 3, 4),
+                         coef0 = c(0.1, 0.5, 1, 2, 3, 4))
+summary(sigmoid.tune)
+best.sigmoid <- sigmoid.tune$best.model
+sigmoid.test <- predict(best.sigmoid, newdata = test)
+table(sigmoid.test, test$type)
+(82+35)/147
+## 在测试集上表现得更好, 可以选 择sigmoid核函数作为最优预测。
+## 研究了两种不同类型的建模技术，从各方面来看，KNN都处于下风。KNN在测试 集上最好的正确率只有71%左右，相反，通过SVM可以获得接近80%的正确率(使用sigmoid核函数的SVM模型)。
+```
+
+## 模型选择
+
+通过混淆矩阵来比较各种模型, 友caret包的confusionMatrix() 函数, 使用过InformationValue包中的同名函数。但caret包中的这 个函数会生成我们评价和选择最优模型所需的所有统计量。先从建立的最后一个模型开始，使用 的语法和基础的table()函数一样，不同之处是要指定positive类
+
+其他统计量介绍:
+
+    No Information Rate：最大分类所占的比例——63%的人没有糖尿病
+    Mcnemar's Test：我们现在不关心这个统计量，它用于配对分析，主要用于流行病学 的研究
+    Sensitivity：敏感度，真阳性率；在本案例中，表示没有糖尿病并且被正确识别的 比例。
+    Specificity：特异度，真阴性率；在本案例中，表示有糖尿病并且被正确识别的比例
+    Pos Pred Value：阳性预测率，被认为有糖尿病的人中真的有糖尿病的概率。
+      PPV =敏感度 *患病率/((敏感度 *患病率) + (1-敏感度) * (1-患病率))
+    Neg Pred Value：阴性预测率，被认为没有糖尿病的人中真的没有糖尿病的概率
+      NPV=敏感度 * (1-患病率)/(((1-敏感度) * (患病率)) + (敏感度) * (1-患病率) )
+    Prevalence：患病率，某种疾病在人群中流行度的估计值: 第二列   （Yes列）中的数之和除以总观测数（矩阵中所有数之和）。 
+    Detection Rate：真阳性预测中被正确识别的比例
+    Detection Prevalence：预测的患病率，在本案例中，底行中的数的和除以总观测数。
+    Balanced Accuracy：所有类别正确率的平均数。用来表示由于分类器算法中潜在的偏     差造成的对最频繁类的过度预测。可以简单地用(敏感度 + 特异度)/2来计算
+
+```{r,echo = T,message = FALSE, error = FALSE, warning = FALSE}
+confusionMatrix(sigmoid.test, test$type, positive = "Yes")
+## 结果和线性SVM进行对比
+confusionMatrix(tune.test, test$type, positive = "Yes")
+```
+
+
+
+## 特征选择
+
+此处忽略了一件事，即没有进行任何特征选择。我们做的工作就是把特征堆在一起， 作为所谓的输入空间，然后让SVM这个黑盒去计算，最后给出一个预测分类。使用SVM的一个 主要问题就是，它给出的结果非常难以解释. 使用caret包进行粗略的特征选择。因为对于那些像SVM一样使用 黑盒技术的方法来说，特征选择确实是个艰巨的挑战。这也是使用这些技术时可能遇到的主要困 难
+
+还有一些其他办法可以进行特征选择, 需要做的就是反复实验。再次用到caret包，因为它可以基于kernlab包在线性SVM中 进行交叉验证. 
+
+设定随机数种子，在caret包中的rfeControl()函数中指定交叉验 证方法，使用rfe()函数执行一个递归的特征选择过程，最后检验模型在测试集上的运行情况。 在rfeControl()中，你需要根据使用的模型指定functions参数。可以使用几种不同的functions 参数，此处使用lrFuncs
+
+
+```{r,echo = T,message = FALSE, error = FALSE, warning = FALSE}
+set.seed(123)
+rfeCNTL <- rfeControl(functions = lrFuncs, method = "cv", number = 10)
+## 要指定输入数据和响应因子、通过参数sizes指定输入 特征的数量以及kernlab包中的线性方法（此处是svmLinear）。method还有其他一些选项
+svm.features <- rfe(train[, 1:7], train[, 8],
+                   sizes = c(7, 6, 5, 4), 
+                   rfeControl = rfeCNTL, 
+                   method = "svmLinear")
+svm.features
+svm.5 <- svm(type ~ glu + ped + npreg + bmi + age, 
+             data = train, 
+             kernel = "linear")
+svm.5.predict = predict(svm.5, newdata=test[c(1,2,5,6,7)])
+table(svm.5.predict, test$type)
+## 全特征模型的正确率是76.2%, 表现不怎么样, 要回到全特征模型。
+```
+

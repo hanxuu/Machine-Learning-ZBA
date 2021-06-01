@@ -1,0 +1,13 @@
+eq:eq1
+fig:example-plot
+bayesian-theory
+section
+space
+space-1
+space-2
+neural-network
+introduction
+反向传播方法进行训练的前馈神经网络
+application
+数据准备
+模型构建
