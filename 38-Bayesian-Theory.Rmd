@@ -2,7 +2,7 @@
 
 ## Introduction of Bayesian
 
-### Frequency school
+### Frequency
 
 
 * A set of random samples, the frequency school believes that the overall parameters are constant, and the samples are obtained randomly;
@@ -20,6 +20,32 @@ The two are related as follows: Given a prior belief that a probability distribu
 $$
 p(\theta \mid x)=\frac{p(x \mid \theta)}{p(x)} p(\theta)
 $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## 概率分布
