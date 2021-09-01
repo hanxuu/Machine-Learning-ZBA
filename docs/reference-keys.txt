@@ -11,3 +11,9 @@ introduction
 application
 数据准备
 模型构建
+introduction-of-bayesian
+frequency
+posterior-distribution
+irt
+item-response-theory
+ctt-and-irt
